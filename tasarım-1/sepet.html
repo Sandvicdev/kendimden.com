@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepetim - Kendimden.com</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .logo-text {
+            background: linear-gradient(90deg, #FF6B00 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #FF6B00 0%, #FFA500 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,107,0,0.3);
+        }
+        
+        .cart-item {
+            transition: all 0.3s ease;
+        }
+        
+        .cart-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .quantity-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .quantity-btn:hover {
+            background-color: #f3f4f6;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF6B00 0%, #FFA500 100%);
+            transition: width 0.5s ease;
+        }
+        
+        .category-dropdown {
+            transition: all 0.3s ease;
+        }
+        
+        .category-dropdown:hover .category-dropdown-content {
+            display: block;
+        }
+        
+        .category-dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 800px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Üst Navigasyon - 1. Bölüm (Index'ten) -->
+    <nav class="bg-gradient-to-r from-orange-600 to-orange-500 text-white py-2">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center text-sm">
+                <div class="flex space-x-6">
+                    <a href="index.html" class="hover:text-orange-200 transition">Ana Sayfa</a>
+                    <a href="#" class="hover:text-orange-200 transition">Partner Ol</a>
+                    <a href="#" class="hover:text-orange-200 transition">Yardım & Destek</a>
+                    <a href="#" class="hover:text-orange-200 transition">Hakkımızda</a>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-orange-200 transition">İndirim Kuponları</a>
+                    <a href="#" class="hover:text-orange-200 transition">Fırsatlar</a>
+                    <a href="#" class="hover:text-orange-200 transition flex items-center">
+                        <i class="fas fa-headset mr-1"></i> 7/24 Destek
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Üst Navigasyon - 2. Bölüm (Ana Navbar - Index'ten) -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <!-- Logo -->
+                <a href="index.html" class="logo-container flex items-center no-underline hover:opacity-90 transition">
+                    <img src="/img/kendimden-logo-2.png" alt="kendimden.com logo"
+                        class="logo-image h-auto max-h-12 w-auto">
+                </a>
+                
+                <!-- Arama Çubuğu -->
+                <div class="hidden md:flex flex-1 max-w-2xl mx-8">
+                    <div class="relative w-full">
+                        <input 
+                            type="text" 
+                            placeholder="Ne arıyorsun?" 
+                            class="w-full py-3 px-6 border-2 border-gray-200 rounded-full focus:outline-none focus:border-orange-500"
+                        >
+                        <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-orange-500">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Kullanıcı İşlemleri -->
+                <div class="flex items-center space-x-6">
+                    <button class="relative text-gray-700 hover:text-orange-500 transition hidden md:block">
+                        <i class="far fa-heart text-2xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">12</span>
+                    </button>
+                    
+                    <button class="relative text-gray-700 hover:text-orange-500 transition">
+                        <i class="fas fa-shopping-cart text-2xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                    </button>
+                    
+                    <div class="hidden md:flex items-center space-x-2">
+                        <div class="h-8 w-8 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 flex items-center justify-center text-white">
+                            <i class="fas fa-user text-sm"></i>
+                        </div>
+                        <a href="#" class="text-gray-700 hover:text-orange-500 font-medium transition">Giriş yap</a>
+                    </div>
+                    
+                    <button class="md:hidden text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Kategoriler Navigasyonu (Index'ten) -->
+    <nav class="bg-white border-t border-b border-gray-200 py-3">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <div class="category-dropdown relative">
+                    <button class="flex items-center space-x-2 text-gray-800 font-medium hover:text-orange-500 transition">
+                        <i class="fas fa-bars text-lg"></i>
+                        <span>Kategoriler</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    
+                    <div class="category-dropdown-content hidden">
+                        <div class="grid grid-cols-3 gap-8">
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-4 text-lg">Popüler Kategoriler</h4>
+                                <ul class="space-y-3">
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 transition flex items-center">
+                                        <i class="fas fa-gamepad mr-2 text-orange-500"></i> Hobi & Eğlence
+                                    </a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 transition flex items-center">
+                                        <i class="fas fa-tshirt mr-2 text-orange-500"></i> Moda
+                                    </a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 transition flex items-center">
+                                        <i class="fas fa-laptop mr-2 text-orange-500"></i> Elektronik
+                                    </a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 transition flex items-center">
+                                        <i class="fas fa-home mr-2 text-orange-500"></i> Ev & Yaşam
+                                    </a></li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-4 text-lg">Diğer Kategoriler</h4>
+                                <ul class="space-y-3">
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Aksesuar</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Anne & Bebek</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Ayakkabı</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Bahçe & Elektrik</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">El Aletleri</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Hırdavat</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-4 text-lg">&nbsp;</h4>
+                                <ul class="space-y-3">
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Banyo</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Yapı Malzemeleri</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Çocuk</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Diğer</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-orange-500 font-medium transition">Keşfet</a>
+                    <a href="#" class="text-gray-700 hover:text-orange-500 font-medium transition">Çok Satanlar</a>
+                    <a href="#" class="text-gray-700 hover:text-orange-500 font-medium transition">Yeni Gelenler</a>
+                    <a href="#" class="text-gray-700 hover:text-orange-500 font-medium transition">İndirimli Ürünler</a>
+                    <a href="#" class="text-gray-700 hover:text-orange-500 font-medium transition">Satış Yap</a>
+                </div>
+                
+                <div class="md:hidden">
+                    <button class="text-gray-700">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sepet Sayfası -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Sepet Yolu (Breadcrumb) -->
+        <div class="mb-8">
+            <nav class="flex" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="index.html" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-orange-500">
+                            <i class="fas fa-home mr-2"></i>
+                            Ana Sayfa
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400"></i>
+                            <span class="ml-3 text-sm font-medium text-orange-500">Sepetim</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sol Taraf - Sepet Ürünleri -->
+            <div class="lg:w-2/3">
+                <!-- Başlık -->
+                <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+                    <h1 class="text-3xl font-bold text-gray-800 mb-2">Sepetim</h1>
+                    <div class="flex items-center text-gray-600">
+                        <i class="fas fa-shopping-cart text-orange-500 mr-2"></i>
+                        <span id="cart-count">3 ürün sepetinizde</span>
+                    </div>
+                </div>
+                
+                <!-- Ücretsiz Kargo İlerleme Çubuğu -->
+                <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-shipping-fast text-green-500 text-xl mr-3"></i>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Ücretsiz Kargo için <span id="remaining-amount" class="text-green-600">₺149.90</span> kaldı!</h3>
+                                <p class="text-sm text-gray-600">₺250.00 ve üzeri alışverişlerde geçerlidir</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div id="spent-amount" class="text-2xl font-bold text-gray-800">₺100.10</div>
+                            <div class="text-sm text-gray-600">harcandı</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar bg-gray-200">
+                        <div id="progress-fill" class="progress-fill" style="width: 40%"></div>
+                    </div>
+                </div>
+                
+                <!-- Sepet Ürünleri (API'den gelecek) -->
+                <div id="cart-products" class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="text-center py-12">
+                        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500 mx-auto"></div>
+                        <p class="mt-4 text-gray-600">Sepet ürünleri yükleniyor...</p>
+                    </div>
+                </div>
+                
+                <!-- Sepet İşlemleri -->
+                <div class="flex flex-col sm:flex-row justify-between items-center mt-6 gap-4">
+                    <a href="index.html" class="text-orange-500 font-medium hover:text-orange-600 transition flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i> Alışverişe Devam Et
+                    </a>
+                    
+                    <div class="flex space-x-4">
+                        <button id="clear-cart" class="px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition">
+                            Sepeti Temizle
+                        </button>
+                        <button id="update-cart" class="px-6 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-medium rounded-lg btn-primary">
+                            Sepeti Güncelle
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sağ Taraf - Sipariş Özeti -->
+            <div class="lg:w-1/3">
+                <div class="sticky top-6">
+                    <!-- Sipariş Özeti -->
+                    <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+                        <h2 class="text-xl font-bold text-gray-800 mb-6">Sipariş Özeti</h2>
+                        
+                        <!-- Fiyat Detayları -->
+                        <div class="space-y-4 mb-6">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Ara Toplam</span>
+                                <span id="subtotal" class="font-medium">₺0.00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Kargo Ücreti</span>
+                                <span id="shipping" class="font-medium text-green-600">Ücretsiz</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">İndirim</span>
+                                <span id="discount" class="font-medium text-green-600">-₺0.00</span>
+                            </div>
+                            <div class="border-t border-gray-200 pt-4">
+                                <div class="flex justify-between text-lg font-bold">
+                                    <span>Toplam</span>
+                                    <span id="total" class="text-orange-600">₺0.00</span>
+                                </div>
+                                <div class="text-sm text-gray-600 mt-1">KDV Dahil</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Kupon Kodu -->
+                        <div class="mb-6">
+                            <div class="flex mb-3">
+                                <input type="text" 
+                                       placeholder="Kupon Kodu" 
+                                       class="flex-grow px-4 py-3 border border-gray-300 rounded-l-lg focus:outline-none focus:border-orange-500">
+                                <button class="px-6 py-3 bg-gray-800 text-white font-medium rounded-r-lg hover:bg-gray-900 transition">
+                                    Uygula
+                                </button>
+                            </div>
+                            <div class="text-sm text-gray-600">
+                                <i class="fas fa-tag text-orange-500 mr-1"></i> 3 kuponunuz var
+                            </div>
+                        </div>
+                        
+                        <!-- Güvenli Alışveriş -->
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+                            <div class="flex items-center mb-2">
+                                <i class="fas fa-shield-alt text-green-500 text-xl mr-3"></i>
+                                <h4 class="font-bold text-gray-800">Güvenli Alışveriş</h4>
+                            </div>
+                            <p class="text-sm text-gray-600">
+                                Ödemeniz ürün elinize ulaşana kadar koruma altında. %100 güvenli alışveriş garantisi.
+                            </p>
+                        </div>
+                        
+                        <!-- Ödeme Butonu -->
+                        <button class="w-full py-4 bg-gradient-to-r from-orange-600 to-yellow-500 text-white font-bold text-lg rounded-xl btn-primary mb-4">
+                            <i class="fas fa-lock mr-2"></i> Güvenli Ödemeye Geç
+                        </button>
+                        
+                        <!-- Ödeme Yöntemleri -->
+                        <div class="text-center">
+                            <div class="text-gray-600 text-sm mb-3">Güvenli Ödeme Yöntemleri</div>
+                            <div class="flex justify-center space-x-4">
+                                <div class="w-10 h-6 bg-blue-100 rounded flex items-center justify-center">
+                                    <i class="fab fa-cc-visa text-blue-600"></i>
+                                </div>
+                                <div class="w-10 h-6 bg-yellow-100 rounded flex items-center justify-center">
+                                    <i class="fab fa-cc-mastercard text-red-600"></i>
+                                </div>
+                                <div class="w-10 h-6 bg-purple-100 rounded flex items-center justify-center">
+                                    <i class="fas fa-credit-card text-purple-600"></i>
+                                </div>
+                                <div class="w-10 h-6 bg-green-100 rounded flex items-center justify-center">
+                                    <i class="fab fa-cc-paypal text-blue-600"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hızlı Teslimat Banner -->
+                    <div class="bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-xl p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-bolt text-2xl mr-3"></i>
+                            <h3 class="font-bold text-lg">Hızlı Teslimat</h3>
+                        </div>
+                        <p class="mb-4 text-sm opacity-90">
+                            <i class="fas fa-check-circle mr-2"></i> Siparişiniz 24 saat içinde kargoya verilir
+                        </p>
+                        <p class="mb-4 text-sm opacity-90">
+                            <i class="fas fa-check-circle mr-2"></i> Ankara içi 1 günde teslimat
+                        </p>
+                        <div class="text-center">
+                            <div class="text-xs opacity-75">Sonraki adımda teslimat adresinizi seçebilirsiniz</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Önerilen Ürünler (API'den gelecek) -->
+        <div class="mt-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Sepetinize Ekleyebilirsiniz</h2>
+            <div id="suggested-products" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center py-8">
+                    <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500 mx-auto"></div>
+                    <p class="mt-4 text-gray-600">Önerilen ürünler yükleniyor...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fake Store API'den ürünleri çekme
+        async function fetchProducts() {
+            try {
+                // Sepetteki ürünler için (4 ürün alıyoruz)
+                const cartResponse = await fetch('https://fakestoreapi.com/products?limit=4');
+                const cartProducts = await cartResponse.json();
+                
+                // Önerilen ürünler için (4 farklı ürün)
+                const suggestedResponse = await fetch('https://fakestoreapi.com/products?limit=8');
+                const allProducts = await suggestedResponse.json();
+                const suggestedProducts = allProducts.slice(4, 8); // 4-7 arası ürünler
+                
+                displayCartProducts(cartProducts);
+                displaySuggestedProducts(suggestedProducts);
+                updateCartTotal();
+            } catch (error) {
+                console.error('Ürünler yüklenirken hata oluştu:', error);
+                displayFallbackProducts();
+            }
+        }
+        
+        // Sepet ürünlerini görüntüleme
+        function displayCartProducts(products) {
+            const container = document.getElementById('cart-products');
+            container.innerHTML = '';
+            
+            products.forEach((product, index) => {
+                // TL fiyatı için dönüşüm (rastgele indirim ekliyoruz)
+                const originalPrice = product.price * 30; // USD to TL yaklaşık
+                const discountPercentage = [30, 20, 15, 10][index] || 10;
+                const discountedPrice = originalPrice * (1 - discountPercentage / 100);
+                
+                const productCard = document.createElement('div');
+                productCard.className = `cart-item border-b border-gray-100 p-6`;
+                productCard.dataset.id = product.id;
+                productCard.dataset.price = discountedPrice.toFixed(2);
+                
+                productCard.innerHTML = `
+                    <div class="flex flex-col md:flex-row">
+                        <!-- Ürün Resmi -->
+                        <div class="md:w-1/4 mb-4 md:mb-0">
+                            <div class="relative">
+                                <img src="${product.image}" 
+                                     alt="${product.title}" 
+                                     class="w-full h-48 object-contain rounded-lg bg-white p-4">
+                                ${discountPercentage > 0 ? 
+                                    `<span class="absolute top-2 left-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">%${discountPercentage}</span>` 
+                                    : ''}
+                            </div>
+                        </div>
+                        
+                        <!-- Ürün Detayları -->
+                        <div class="md:w-3/4 md:pl-6">
+                            <div class="flex justify-between">
+                                <div>
+                                    <h3 class="font-bold text-gray-800 text-lg mb-2">${product.title}</h3>
+                                    <p class="text-gray-600 mb-3 line-clamp-2">${product.description}</p>
+                                    
+                                    <!-- Kategori -->
+                                    <div class="mb-4">
+                                        <span class="text-gray-700 font-medium mr-2">Kategori:</span>
+                                        <span class="text-sm text-gray-600">${product.category}</span>
+                                    </div>
+                                    
+                                    <!-- Puan -->
+                                    <div class="flex items-center text-gray-600 mb-4">
+                                        <div class="flex text-yellow-400 mr-2">
+                                            ${getStarRating(product.rating.rate)}
+                                        </div>
+                                        <span class="text-sm">(${product.rating.count})</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Fiyat ve Sil Butonu -->
+                                <div class="text-right">
+                                    <button class="delete-btn text-gray-400 hover:text-red-500 mb-4">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <div class="mb-2">
+                                        <div class="text-2xl font-bold text-orange-600">₺${discountedPrice.toFixed(2)}</div>
+                                        ${discountPercentage > 0 ? 
+                                            `<div class="text-sm text-gray-500 line-through">₺${originalPrice.toFixed(2)}</div>` 
+                                            : ''}
+                                    </div>
+                                    <div class="text-sm text-green-600 font-medium">
+                                        <i class="fas fa-check-circle mr-1"></i> Stokta var
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Adet ve Toplam -->
+                            <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                                <!-- Adet Ayarlayıcı -->
+                                <div class="flex items-center">
+                                    <span class="text-gray-700 font-medium mr-4">Adet:</span>
+                                    <div class="flex items-center border border-gray-300 rounded-lg">
+                                        <button class="decrease-btn quantity-btn px-3 py-2 text-gray-600">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <input type="text" value="1" class="quantity-input w-12 text-center border-x border-gray-300 py-2">
+                                        <button class="increase-btn quantity-btn px-3 py-2 text-gray-600">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Toplam Fiyat -->
+                                <div class="text-right">
+                                    <div class="text-sm text-gray-600">Toplam:</div>
+                                    <div class="text-xl font-bold text-gray-800 item-total">₺${discountedPrice.toFixed(2)}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(productCard);
+            });
+            
+            // Event listener'ları ekle
+            addEventListeners();
+        }
+        
+        // Önerilen ürünleri görüntüleme
+        function displaySuggestedProducts(products) {
+            const container = document.getElementById('suggested-products');
+            container.innerHTML = '';
+            
+            products.forEach(product => {
+                const priceTL = (product.price * 30).toFixed(2);
+                const discountedPrice = (priceTL * 0.8).toFixed(2); // %20 indirim uyguluyoruz
+                
+                const productCard = document.createElement('div');
+                productCard.className = 'bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition';
+                productCard.innerHTML = `
+                    <img src="${product.image}" 
+                         alt="${product.title}" 
+                         class="w-full h-48 object-contain bg-white p-4">
+                    <div class="p-4">
+                        <h4 class="font-bold text-gray-800 mb-2 line-clamp-2 text-sm">${product.title}</h4>
+                        <div class="flex items-center mb-3">
+                            <div class="text-orange-600 font-bold">₺${discountedPrice}</div>
+                            <div class="ml-2 text-sm text-gray-500 line-through">₺${priceTL}</div>
+                        </div>
+                        <button class="add-to-cart-btn w-full py-2 border border-orange-500 text-orange-500 rounded-lg hover:bg-orange-50 transition"
+                                data-id="${product.id}"
+                                data-title="${product.title}"
+                                data-price="${discountedPrice}"
+                                data-image="${product.image}">
+                            Sepete Ekle
+                        </button>
+                    </div>
+                `;
+                
+                container.appendChild(productCard);
+            });
+            
+            // "Sepete Ekle" butonlarına event listener ekle
+            document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const productId = this.dataset.id;
+                    const productTitle = this.dataset.title;
+                    const productPrice = this.dataset.price;
+                    const productImage = this.dataset.image;
+                    
+                    alert(`${productTitle} ürünü sepete eklendi!`);
+                    // Burada gerçek bir sepet yönetimi için daha gelişmiş kod gerekir
+                });
+            });
+        }
+        
+        // Yıldız derecelendirmesi oluşturma
+        function getStarRating(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star text-sm"></i>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt text-sm"></i>';
+            }
+            
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="far fa-star text-sm"></i>';
+            }
+            
+            return stars;
+        }
+        
+        // API çalışmazsa yedek ürünler
+        function displayFallbackProducts() {
+            const fallbackCartProducts = [
+                { id: 1, title: "Akıllı Saat Pro", price: 899.99, description: "Kadın Erkek Spor Akıllı Saat", category: "Elektronik", rating: { rate: 4.5, count: 128 }, image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+                { id: 2, title: "Spor Ayakkabı", price: 459.99, description: "Koşu ve Fitness için Rahat Ayakkabı", category: "Moda", rating: { rate: 4.8, count: 256 }, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+                { id: 3, title: "Bluetooth Kulaklık", price: 349.99, description: "Noise Cancelling Kablosuz Kulaklık", category: "Elektronik", rating: { rate: 4.3, count: 89 }, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+                { id: 4, title: "Kahve Makinesi", price: 799.99, description: "Otomatik Kahve Makinesi", category: "Ev & Yaşam", rating: { rate: 4.7, count: 156 }, image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" }
+            ];
+            
+            const fallbackSuggestedProducts = [
+                { id: 5, title: "Aksiyon Kamerası", price: 1299.99, image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+                { id: 6, title: "Powerbank 20000mAh", price: 199.99, image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+                { id: 7, title: "Hızlı Şarj Kablosu", price: 49.99, image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+                { id: 8, title: "Telefon Kılıfı", price: 79.99, image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" }
+            ];
+            
+            displayCartProducts(fallbackCartProducts);
+            displaySuggestedProducts(fallbackSuggestedProducts);
+        }
+        
+        // Event listener'ları ekle
+        function addEventListeners() {
+            // Artır butonları
+            document.querySelectorAll('.increase-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const input = this.parentElement.querySelector('.quantity-input');
+                    let value = parseInt(input.value);
+                    input.value = value + 1;
+                    updateItemTotal(this);
+                    updateCartTotal();
+                });
+            });
+            
+            // Azalt butonları
+            document.querySelectorAll('.decrease-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const input = this.parentElement.querySelector('.quantity-input');
+                    let value = parseInt(input.value);
+                    if (value > 1) {
+                        input.value = value - 1;
+                        updateItemTotal(this);
+                        updateCartTotal();
+                    }
+                });
+            });
+            
+            // Sil butonları
+            document.querySelectorAll('.delete-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const cartItem = this.closest('.cart-item');
+                    cartItem.style.opacity = '0';
+                    cartItem.style.transform = 'translateX(20px)';
+                    
+                    setTimeout(() => {
+                        cartItem.remove();
+                        updateCartTotal();
+                    }, 300);
+                });
+            });
+            
+            // Input değişiklikleri
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                input.addEventListener('change', function() {
+                    let value = parseInt(this.value);
+                    if (value < 1) this.value = 1;
+                    if (value > 99) this.value = 99;
+                    updateItemTotal(this);
+                    updateCartTotal();
+                });
+            });
+            
+            // Sepeti temizle butonu
+            document.getElementById('clear-cart').addEventListener('click', function() {
+                if (confirm('Sepetinizdeki tüm ürünleri silmek istediğinize emin misiniz?')) {
+                    document.querySelectorAll('.cart-item').forEach(item => {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateX(-20px)';
+                    });
+                    
+                    setTimeout(() => {
+                        document.getElementById('cart-products').innerHTML = `
+                            <div class="text-center py-12">
+                                <i class="fas fa-shopping-cart text-4xl text-gray-300 mb-4"></i>
+                                <p class="text-gray-600">Sepetiniz boş</p>
+                                <a href="index.html" class="mt-4 inline-block px-6 py-2 bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-lg btn-primary">
+                                    Alışverişe Başla
+                                </a>
+                            </div>
+                        `;
+                        updateCartTotal();
+                    }, 300);
+                }
+            });
+            
+            // Sepeti güncelle butonu
+            document.getElementById('update-cart').addEventListener('click', function() {
+                alert('Sepet güncellendi!');
+                updateCartTotal();
+            });
+        }
+        
+        // Ürün toplamını güncelle
+        function updateItemTotal(element) {
+            const cartItem = element.closest('.cart-item');
+            const price = parseFloat(cartItem.dataset.price);
+            const quantity = parseInt(cartItem.querySelector('.quantity-input').value);
+            const totalElement = cartItem.querySelector('.item-total');
+            
+            if (totalElement) {
+                totalElement.textContent = '₺' + (price * quantity).toFixed(2);
+            }
+        }
+        
+        // Sepet toplamını güncelle
+        function updateCartTotal() {
+            let subtotal = 0;
+            let itemCount = 0;
+            
+            document.querySelectorAll('.cart-item').forEach(item => {
+                const price = parseFloat(item.dataset.price);
+                const quantity = parseInt(item.querySelector('.quantity-input').value);
+                subtotal += price * quantity;
+                itemCount += quantity;
+            });
+            
+            // Sepet sayısını güncelle
+            document.getElementById('cart-count').textContent = `${itemCount} ürün sepetinizde`;
+            
+            // Ara toplamı güncelle
+            document.getElementById('subtotal').textContent = '₺' + subtotal.toFixed(2);
+            
+            // İndirimi hesapla (örnek: %10 indirim)
+            const discount = subtotal * 0.1;
+            document.getElementById('discount').textContent = '-₺' + discount.toFixed(2);
+            
+            // Toplamı güncelle
+            const total = subtotal - discount;
+            document.getElementById('total').textContent = '₺' + total.toFixed(2);
+            
+            // Ücretsiz kargo ilerlemesini güncelle
+            const freeShippingThreshold = 250;
+            const spentAmount = subtotal;
+            const remainingAmount = Math.max(0, freeShippingThreshold - spentAmount);
+            const progressPercentage = Math.min(100, (spentAmount / freeShippingThreshold) * 100);
+            
+            document.getElementById('spent-amount').textContent = '₺' + spentAmount.toFixed(2);
+            document.getElementById('remaining-amount').textContent = '₺' + remainingAmount.toFixed(2);
+            document.getElementById('progress-fill').style.width = progressPercentage + '%';
+            
+            // Kargo ücretini güncelle
+            const shippingElement = document.getElementById('shipping');
+            if (spentAmount >= freeShippingThreshold) {
+                shippingElement.textContent = 'Ücretsiz';
+                shippingElement.className = 'font-medium text-green-600';
+            } else {
+                const shippingCost = 29.90;
+                shippingElement.textContent = '₺' + shippingCost.toFixed(2);
+                shippingElement.className = 'font-medium text-gray-800';
+            }
+        }
+        
+        // Sayfa yüklendiğinde
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchProducts();
+            
+            // Kategori dropdown için JavaScript
+            const categoryDropdown = document.querySelector('.category-dropdown');
+            const dropdownContent = document.querySelector('.category-dropdown-content');
+            
+            if (categoryDropdown && dropdownContent) {
+                categoryDropdown.addEventListener('mouseenter', () => {
+                    dropdownContent.style.display = 'block';
+                });
+                
+                categoryDropdown.addEventListener('mouseleave', () => {
+                    dropdownContent.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
