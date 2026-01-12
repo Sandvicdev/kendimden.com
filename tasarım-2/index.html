@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kendimden.com - Türkiye'nin Yeni Nesil Pazaryeri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B00;
+            --primary-light: #FFF5EB;
+            --secondary: #1F2937;
+            --accent: #10B981;
+        }
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary) 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary) 0%, #FFA500 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 107, 0, 0.15);
+        }
+
+        .floating-animation {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 107, 0, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 0, 0);
+            }
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .gradient-border {
+            position: relative;
+            border-radius: 12px;
+        }
+
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--primary), #FFA500);
+            border-radius: 14px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gradient-border:hover::before {
+            opacity: 1;
+        }
+
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e05a00;
+        }
+    </style>
+</head>
+
+<body class="smooth-scroll bg-gray-50">
+    <!-- Top Announcement -->
+    <div class="gradient-bg text-white text-center py-2 px-4 text-sm">
+        <div class="container mx-auto">
+            <span class="pulse-animation inline-block px-2 py-1 rounded-full bg-white/20 mr-2">🔥</span>
+            2026 Lansman ile geliyoruz! Erken kayıt olanlara özel %30 indirim.
+            <a href="#newsletter" class="font-semibold underline ml-2 hover:text-gray-100">Katılın →</a>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="sticky-nav border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 no-underline">
+                    <div class="h-10 w-10 rounded-xl gradient-bg flex items-center justify-center">
+                        <i class="fas fa-store text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold gradient-text">kendimden.com</div>
+                        <div class="text-xs text-gray-500 -mt-1">Türkiye'nin Yeni Nesil Pazaryeri</div>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-orange-600 font-medium transition">Ana Sayfa</a>
+                    <a href="#categories"
+                        class="text-gray-700 hover:text-orange-600 font-medium transition">Kategoriler</a>
+                    <a href="#features"
+                        class="text-gray-700 hover:text-orange-600 font-medium transition">Özellikler</a>
+                    <a href="#products" class="text-gray-700 hover:text-orange-600 font-medium transition">Ürünler</a>
+                    <a href="#" class="text-gray-700 hover:text-orange-600 font-medium transition">Satış Yap</a>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="hidden md:block p-2 text-gray-600 hover:text-orange-600 transition">
+                        <i class="far fa-heart text-xl"></i>
+                    </a>
+                    <a href="/tasarım-2/sepet.html" class="relative p-2 text-gray-600 hover:text-orange-600 transition">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span
+                            class="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                    </a>
+                    <div class="hidden md:flex items-center space-x-2">
+                        <div
+                            class="h-8 w-8 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 flex items-center justify-center text-white">
+                            <i class="fas fa-user text-sm"></i>
+                        </div>
+                        <div>
+                            <a href="#" class="text-gray-700 hover:text-orange-600 font-medium block text-sm">Giriş
+                                Yap</a>
+                            <a href="#" class="text-gray-500 text-xs hover:text-orange-600">veya Kayıt Ol</a>
+                        </div>
+                    </div>
+                    <button class="md:hidden text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="pb-4">
+                <div class="relative max-w-2xl mx-auto">
+                    <input type="text" placeholder="Ne arıyorsunuz? Binlerce ürün sizi bekliyor..."
+                        class="w-full py-3 px-6 pr-12 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent shadow-sm">
+                    <button
+                        class="absolute right-3 top-1/2 transform -translate-y-1/2 p-2 text-gray-500 hover:text-orange-600">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden">
+        <!-- Background with Gradient and Pattern -->
+        <div class="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-yellow-50">
+            <!-- Geometric Pattern -->
+            <div class="absolute inset-0 opacity-5">
+                <div class="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-orange-300 blur-3xl"></div>
+                <div class="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-yellow-300 blur-3xl"></div>
+            </div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div
+                class="absolute top-1/4 left-1/4 w-72 h-72 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse">
+            </div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"
+                style="animation-delay: 1s;"></div>
+        </div>
+
+        <div class="container mx-auto px-4 py-20 md:py-32 relative">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-16">
+                <!-- Content -->
+                <div class="lg:w-1/2">
+                    <!-- Badge -->
+                    <div
+                        class="inline-flex items-center gap-3 px-4 py-3 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg mb-8 border border-orange-100">
+                        <div class="relative">
+                            <div
+                                class="w-8 h-8 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 flex items-center justify-center">
+                                <i class="fas fa-bolt text-white text-sm"></i>
+                            </div>
+                            <div
+                                class="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="font-bold text-gray-800">2026 Lansman Özel Fırsat</div>
+                            <div class="text-sm text-gray-600">İlk 10.000 üyeye özel avantajlar</div>
+                        </div>
+                        <div class="ml-auto">
+                            <div
+                                class="px-3 py-1 bg-gradient-to-r from-orange-500 to-yellow-500 text-white text-sm font-bold rounded-full">
+                                %30 OFF
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main Heading -->
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight">
+                        Türkiye'nin
+                        <span class="block">
+                            <span class="gradient-text">Yeni Nesil</span>
+                            <span class="text-gray-900">Pazaryeri</span>
+                        </span>
+                    </h1>
+
+                    <!-- Subtitle -->
+                    <p class="text-xl text-gray-600 mb-10 max-w-2xl leading-relaxed">
+                        2026 lansmanı ile <span class="font-semibold text-orange-600">yüzbinlerce ürün</span> kapınızda.
+                        Gerçek satıcılar, anında kargo ve <span class="font-semibold text-orange-600">%100
+                            güvenli</span>
+                        alışveriş deneyimi sizi bekliyor.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-5 mb-16">
+                        <a href="#products"
+                            class="group px-10 py-5 gradient-bg text-white font-bold rounded-2xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 transform hover:-translate-y-1">
+                            <div class="relative">
+                                <i class="fas fa-shopping-bag text-xl"></i>
+                                <div class="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full animate-ping"></div>
+                            </div>
+                            <span>Hemen Keşfet</span>
+                            <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                        </a>
+
+                        <a href="#"
+                            class="group px-10 py-5 bg-white border-2 border-gray-200 text-gray-800 font-bold rounded-2xl hover:border-orange-500 hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3">
+                            <i class="fas fa-play-circle text-xl text-orange-500"></i>
+                            <span>Demo İzle</span>
+                            <div class="ml-2 px-2 py-1 bg-orange-50 text-orange-600 text-xs font-bold rounded">
+                                <i class="fas fa-crown mr-1"></i>VIP
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-8 relative">
+                        <!-- Connecting Line -->
+                        <div
+                            class="absolute top-1/2 left-4 right-4 h-0.5 bg-gradient-to-r from-orange-500/20 via-orange-500/40 to-yellow-500/20 -translate-y-1/2">
+                        </div>
+
+                        <div class="text-center relative">
+                            <div
+                                class="text-4xl md:text-5xl font-bold text-gray-900 mb-2 flex items-center justify-center">
+                                <span class="gradient-text">100K+</span>
+                                <div class="ml-2 w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
+                            </div>
+                            <div class="text-gray-600 font-medium">Aktif Ürün</div>
+                            <div class="text-xs text-gray-500 mt-1">Her gün yenileniyor</div>
+                        </div>
+
+                        <div class="text-center relative">
+                            <div class="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
+                                <span class="gradient-text">24</span>
+                                <span class="text-2xl text-gray-700">saat</span>
+                            </div>
+                            <div class="text-gray-600 font-medium">Kargo Süresi</div>
+                            <div class="text-xs text-gray-500 mt-1">Ankara içi 1 gün</div>
+                        </div>
+
+                        <div class="text-center relative">
+                            <div
+                                class="text-4xl md:text-5xl font-bold text-gray-900 mb-2 flex items-center justify-center">
+                                <span class="gradient-text">%100</span>
+                                <i class="fas fa-shield-alt text-green-500 ml-2 text-xl"></i>
+                            </div>
+                            <div class="text-gray-600 font-medium">Güven Garantisi</div>
+                            <div class="text-xs text-gray-500 mt-1">Alıcı koruma</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual -->
+                <div class="lg:w-1/2">
+                    <div class="relative">
+                        <!-- Main Visual Container -->
+                        <div class="relative">
+                            <!-- Background Card with Gradient Border -->
+                            <div
+                                class="absolute -inset-4 bg-gradient-to-r from-orange-500 via-yellow-500 to-orange-500 rounded-3xl opacity-20 blur-3xl animate-pulse">
+                            </div>
+
+                            <!-- Main Product Showcase -->
+                            <div
+                                class="relative bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-[1.02] transition-all duration-500">
+                                <!-- Header -->
+                                <div class="gradient-bg text-white p-6">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <div
+                                                class="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                                                <i class="fas fa-store text-2xl"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-lg">kendimden.com</div>
+                                                <div class="text-sm opacity-90">Online Pazaryeri</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <div class="px-3 py-1 bg-white/20 rounded-full text-sm font-bold">
+                                                <i class="fas fa-star mr-1"></i>4.9
+                                            </div>
+                                            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Product Showcase -->
+                                <div class="p-6">
+                                    <!-- Featured Product -->
+                                    <div class="mb-6">
+                                        <div class="flex items-start justify-between mb-4">
+                                            <div>
+                                                <div class="text-sm text-gray-500 mb-1">ÖNE ÇIKAN ÜRÜN</div>
+                                                <h3 class="text-xl font-bold text-gray-800">Akıllı Saat Pro 2024</h3>
+                                            </div>
+                                            <div class="text-right">
+                                                <div class="text-2xl font-bold gradient-text">₺899</div>
+                                                <div class="text-sm text-gray-500 line-through">₺1.299</div>
+                                            </div>
+                                        </div>
+                                        <div class="relative h-48 rounded-xl overflow-hidden mb-4">
+                                            <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                                alt="Akıllı Saat" class="w-full h-full object-cover">
+                                            <div class="absolute top-4 left-4">
+                                                <span
+                                                    class="px-3 py-1 bg-red-500 text-white text-sm font-bold rounded-full">-31%</span>
+                                            </div>
+                                            <div class="absolute bottom-4 right-4">
+                                                <button
+                                                    class="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition">
+                                                    <i class="fas fa-heart text-gray-600"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product Grid -->
+                                    <div class="grid grid-cols-2 gap-4 mb-6">
+                                        <div
+                                            class="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl p-4 border border-orange-100">
+                                            <div class="flex items-center gap-3">
+                                                <div
+                                                    class="w-12 h-12 rounded-lg bg-white flex items-center justify-center">
+                                                    <i class="fas fa-headphones text-orange-500 text-xl"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="font-bold text-gray-800">Kulaklık</div>
+                                                    <div class="text-sm text-gray-600">₺299</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-4 border border-blue-100">
+                                            <div class="flex items-center gap-3">
+                                                <div
+                                                    class="w-12 h-12 rounded-lg bg-white flex items-center justify-center">
+                                                    <i class="fas fa-mobile-alt text-blue-500 text-xl"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="font-bold text-gray-800">Powerbank</div>
+                                                    <div class="text-sm text-gray-600">₺199</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- CTA -->
+                                    <button
+                                        class="w-full py-4 bg-gradient-to-r from-gray-900 to-gray-800 text-white font-bold rounded-xl hover:shadow-lg transition-all duration-300 group">
+                                        <div class="flex items-center justify-center gap-3">
+                                            <span>Tüm Ürünleri Keşfet</span>
+                                            <i
+                                                class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Elements -->
+                        <div class="absolute -top-6 -left-6">
+                            <div
+                                class="w-20 h-20 rounded-2xl bg-gradient-to-br from-orange-500 to-yellow-500 flex items-center justify-center shadow-2xl floating-animation">
+                                <i class="fas fa-truck text-white text-2xl"></i>
+                            </div>
+                        </div>
+
+                        <div class="absolute -bottom-6 -right-6">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center shadow-2xl floating-animation"
+                                style="animation-delay: 0.5s;">
+                                <i class="fas fa-shield-alt text-white text-xl"></i>
+                            </div>
+                        </div>
+
+                        <!-- Review Card -->
+                        <div class="absolute -left-4 top-1/4 transform -translate-y-1/2">
+                            <div
+                                class="bg-white rounded-2xl shadow-2xl p-4 w-64 transform hover:scale-105 transition-all duration-300">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 flex items-center justify-center text-white font-bold">
+                                        AY
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-gray-800">Ayşe Y.</div>
+                                        <div class="flex text-yellow-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-600 italic">
+                                    "İlk alışverişimde mükemmel deneyim! Ürün ertesi gün elime ulaştı."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+                <a href="#categories" class="flex flex-col items-center text-gray-500 hover:text-orange-500 transition">
+                    <span class="text-sm mb-2 animate-bounce">Keşfet</span>
+                    <i class="fas fa-chevron-down animate-bounce" style="animation-delay: 0.2s;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Popüler Kategoriler</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Aradığınız her şeyi bulabileceğiniz geniş kategori yelpazemiz
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <!-- Category 1 -->
+                <a href="#" class="group bg-gray-50 rounded-xl p-6 text-center card-hover no-underline">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fas fa-tshirt text-2xl text-orange-500"></i>
+                    </div>
+                    <div class="font-medium text-gray-800">Moda</div>
+                    <div class="text-xs text-gray-500 mt-1">1.2K+ ürün</div>
+                </a>
+
+                <!-- Category 2 -->
+                <a href="#" class="group bg-gray-50 rounded-xl p-6 text-center card-hover no-underline">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fas fa-laptop text-2xl text-blue-500"></i>
+                    </div>
+                    <div class="font-medium text-gray-800">Elektronik</div>
+                    <div class="text-xs text-gray-500 mt-1">3.4K+ ürün</div>
+                </a>
+
+                <!-- Category 3 -->
+                <a href="#" class="group bg-gray-50 rounded-xl p-6 text-center card-hover no-underline">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fas fa-home text-2xl text-green-500"></i>
+                    </div>
+                    <div class="font-medium text-gray-800">Ev & Yaşam</div>
+                    <div class="text-xs text-gray-500 mt-1">2.1K+ ürün</div>
+                </a>
+
+                <!-- Category 4 -->
+                <a href="#" class="group bg-gray-50 rounded-xl p-6 text-center card-hover no-underline">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fas fa-book text-2xl text-purple-500"></i>
+                    </div>
+                    <div class="font-medium text-gray-800">Kitap</div>
+                    <div class="text-xs text-gray-500 mt-1">800+ ürün</div>
+                </a>
+
+                <!-- Category 5 -->
+                <a href="#" class="group bg-gray-50 rounded-xl p-6 text-center card-hover no-underline">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-100 to-rose-100 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fas fa-dumbbell text-2xl text-red-500"></i>
+                    </div>
+                    <div class="font-medium text-gray-800">Spor</div>
+                    <div class="text-xs text-gray-500 mt-1">1.5K+ ürün</div>
+                </a>
+
+                <!-- Category 6 -->
+                <a href="#" class="group bg-gray-50 rounded-xl p-6 text-center card-hover no-underline">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-100 to-violet-100 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fas fa-gamepad text-2xl text-indigo-500"></i>
+                    </div>
+                    <div class="font-medium text-gray-800">Hobi</div>
+                    <div class="text-xs text-gray-500 mt-1">900+ ürün</div>
+                </a>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#"
+                    class="inline-flex items-center px-6 py-3 border-2 border-gray-300 text-gray-700 font-medium rounded-xl hover:border-orange-500 hover:text-orange-600 transition no-underline">
+                    <i class="fas fa-list mr-2"></i>
+                    Tüm Kategorileri Gör
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-gradient-to-b from-white to-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Neden Kendimden.com?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Benzersiz alışveriş deneyimimiz ile fark yaratıyoruz
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Feature 1 -->
+                <div class="bg-white rounded-2xl p-6 card-hover">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-2xl text-orange-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Güvenli Alışveriş</h3>
+                    <p class="text-gray-600">
+                        Ödemeniz ürün elinize ulaşana kadar koruma altında. %100 güvenli alışveriş garantisi.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white rounded-2xl p-6 card-hover">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-shipping-fast text-2xl text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Hızlı Kargo</h3>
+                    <p class="text-gray-600">
+                        24 saat içinde kargoya teslim. Anlaşmalı kargo firmaları ile hızlı ve güvenli teslimat.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white rounded-2xl p-6 card-hover">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-headset text-2xl text-green-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">7/24 Destek</h3>
+                    <p class="text-gray-600">
+                        Her zaman yanınızdayız. Canlı destek ile sorularınıza anında cevap bulun.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white rounded-2xl p-6 card-hover">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-undo text-2xl text-purple-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Kolay İade</h3>
+                    <p class="text-gray-600">
+                        14 gün içinde kolay iade. Memnun kalmazsanız ürünü kolayca iade edebilirsiniz.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Öne Çıkan Ürünler</h2>
+                    <p class="text-gray-600">En çok beğenilen ve satılan ürünler</p>
+                </div>
+                <div class="flex space-x-2 mt-4 md:mt-0">
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition">
+                        <i class="fas fa-fire text-orange-500 mr-2"></i>Popüler
+                    </button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition">
+                        <i class="fas fa-bolt text-yellow-500 mr-2"></i>Yeni
+                    </button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition">
+                        <i class="fas fa-tag text-green-500 mr-2"></i>İndirim
+                    </button>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="products-container">
+                <!-- Products will be loaded here -->
+                <div class="col-span-4 text-center py-12">
+                    <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500 mx-auto">
+                    </div>
+                    <p class="mt-4 text-gray-600">Ürünler yükleniyor...</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#"
+                    class="inline-flex items-center px-8 py-4 gradient-bg text-white font-semibold rounded-xl hover:opacity-90 transition no-underline card-hover">
+                    <i class="fas fa-store mr-3"></i>
+                    Tüm Ürünleri Gör
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-orange-500 to-yellow-500">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">2026 Lansmanına Özel</h2>
+                <p class="text-white/90 text-lg mb-8">
+                    Türkiye'nin yeni nesil pazaryeri geliyor! Erken kayıt olun,
+                    %30 indirim ve özel avantajlardan yararlanın.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="email" placeholder="E-posta adresiniz"
+                        class="flex-grow px-6 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-white">
+                    <button
+                        class="px-8 py-4 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition">
+                        Erken Kayıt Ol
+                    </button>
+                </div>
+                <p class="text-white/70 text-sm mt-4">
+                    5.432 kişi zaten kayıt oldu. Sıra sizde!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <a href="#" class="flex items-center space-x-3 mb-6 no-underline">
+                        <div class="h-10 w-10 rounded-xl gradient-bg flex items-center justify-center">
+                            <i class="fas fa-store text-white"></i>
+                        </div>
+                        <div>
+                            <div class="text-xl font-bold text-white">kendimden.com</div>
+                            <div class="text-xs text-gray-400">Türkiye'nin Yeni Nesil Pazaryeri</div>
+                        </div>
+                    </a>
+                    <p class="text-gray-400 mb-6 text-sm">
+                        2026 lansman ile yüzbinlerce ürün ile geliyoruz.
+                        Gerçek satıcılar, güvenli alışveriş.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-orange-500 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#"
+                            class="h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-orange-500 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#"
+                            class="h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-orange-500 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Hızlı Bağlantılar</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition no-underline text-sm">Ana
+                                Sayfa</a></li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition no-underline text-sm">Kategoriler</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition no-underline text-sm">Satış
+                                Yap</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition no-underline text-sm">Güvenli
+                                Alışveriş</a></li>
+                    </ul>
+                </div>
+
+                <!-- Help -->
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Yardım</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition no-underline text-sm">Sıkça
+                                Sorulan Sorular</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition no-underline text-sm">İade
+                                Politikası</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition no-underline text-sm">Teslimat
+                                Bilgileri</a></li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-white transition no-underline text-sm">İletişim</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-lg font-bold mb-6">İletişim</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-orange-400 mt-1 mr-3"></i>
+                            <span class="text-sm">info@kendimden.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-orange-400 mt-1 mr-3"></i>
+                            <span class="text-sm">0312 346 5 793</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-orange-400 mt-1 mr-3"></i>
+                            <span class="text-sm">ANKARA, Türkiye</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2023 kendimden.com. Tüm hakları saklıdır. Türkiye'nin Yeni Nesil Pazaryeri</p>
+                <p class="mt-2 text-xs">
+                    <a href="#" class="text-gray-500 hover:text-white transition no-underline">Gizlilik Politikası</a> •
+                    <a href="#" class="text-gray-500 hover:text-white transition no-underline">Kullanım Koşulları</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fake Store API'den ürünleri çekme
+        async function fetchProducts() {
+            try {
+                const response = await fetch('https://fakestoreapi.com/products?limit=8');
+                const products = await response.json();
+                displayProducts(products);
+            } catch (error) {
+                console.error('Ürünler yüklenirken hata oluştu:', error);
+                displayFallbackProducts();
+            }
+        }
+
+        // Ürünleri görüntüleme
+        function displayProducts(products) {
+            const container = document.getElementById('products-container');
+            container.innerHTML = '';
+
+            products.forEach((product, index) => {
+                // TL fiyatı için dönüşüm
+                const priceTL = (product.price * 30).toFixed(2);
+                const originalPrice = (priceTL * 1.3).toFixed(2); // %30 daha pahalı göster
+
+                const productCard = document.createElement('div');
+                productCard.className = 'bg-white rounded-2xl overflow-hidden shadow-sm card-hover';
+
+                productCard.innerHTML = `
+                    <div class="relative">
+                        <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
+                            <img src="${product.image}" 
+                                 alt="${product.title}" 
+                                 class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2 py-1 bg-orange-500 text-white text-xs font-bold rounded">
+                                %${Math.floor(Math.random() * 30) + 10}
+                            </span>
+                        </div>
+                        <button class="absolute top-3 right-3 h-8 w-8 bg-white rounded-full shadow flex items-center justify-center hover:bg-gray-100 transition">
+                            <i class="far fa-heart text-gray-600"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="p-4">
+                        <h3 class="font-medium text-gray-800 mb-2 line-clamp-2" style="height: 3rem;">${product.title}</h3>
+                        
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-xs text-gray-500 ml-2">(${product.rating.count})</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <div class="text-xl font-bold text-orange-600">₺${priceTL}</div>
+                                <div class="text-sm text-gray-500 line-through">₺${originalPrice}</div>
+                            </div>
+                            <span class="text-xs px-2 py-1 bg-green-100 text-green-600 rounded">Stokta</span>
+                        </div>
+                        
+                        <button class="add-to-cart w-full py-3 bg-gray-100 text-gray-700 font-medium rounded-xl hover:bg-orange-500 hover:text-white transition">
+                            <i class="fas fa-shopping-cart mr-2"></i>Sepete Ekle
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(productCard);
+            });
+
+            // Sepete ekle butonlarına event listener ekle
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function () {
+                    const productTitle = this.closest('.card-hover').querySelector('h3').textContent;
+
+                    // Animasyon efekti
+                    this.innerHTML = '<i class="fas fa-check mr-2"></i>Eklendi!';
+                    this.classList.remove('bg-gray-100', 'text-gray-700');
+                    this.classList.add('bg-green-500', 'text-white');
+
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-shopping-cart mr-2"></i>Sepete Ekle';
+                        this.classList.remove('bg-green-500', 'text-white');
+                        this.classList.add('bg-gray-100', 'text-gray-700');
+                    }, 2000);
+
+                    console.log(`${productTitle} sepete eklendi`);
+                });
+            });
+        }
+
+        // API çalışmazsa yedek ürünler
+        function displayFallbackProducts() {
+            const fallbackProducts = [
+                { title: "Kablosuz Kulaklık", price: 299, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
+                { title: "Akıllı Saat Pro", price: 899, image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
+                { title: "Spor Ayakkabı", price: 459, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
+                { title: "Kahve Makinesi", price: 799, image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
+            ];
+
+            const container = document.getElementById('products-container');
+            container.innerHTML = '';
+
+            fallbackProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'bg-white rounded-2xl overflow-hidden shadow-sm card-hover';
+
+                productCard.innerHTML = `
+                    <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
+                        <img src="${product.image}" 
+                             alt="${product.title}" 
+                             class="max-h-full max-w-full object-contain">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-gray-800 mb-2">${product.title}</h3>
+                        <div class="text-xl font-bold text-orange-600 mb-4">₺${product.price}</div>
+                        <button class="w-full py-3 bg-gray-100 text-gray-700 font-medium rounded-xl hover:bg-orange-500 hover:text-white transition">
+                            <i class="fas fa-shopping-cart mr-2"></i>Sepete Ekle
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(productCard);
+            });
+        }
+
+        // Sayfa yüklendiğinde
+        document.addEventListener('DOMContentLoaded', function () {
+            fetchProducts();
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function () {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 100) {
+                    nav.classList.add('shadow-lg');
+                } else {
+                    nav.classList.remove('shadow-lg');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
